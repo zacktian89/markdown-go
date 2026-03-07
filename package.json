@@ -1,0 +1,22 @@
+{
+  "name": "markdown-go-workspace",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build --workspace markdown-go",
+    "typecheck": "npm run typecheck --workspace markdown-go",
+    "pack:cli": "npm pack --workspace markdown-go"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-github-name/markdown-go.git"
+  },
+  "homepage": "https://github.com/your-github-name/markdown-go#readme",
+  "bugs": {
+    "url": "https://github.com/your-github-name/markdown-go/issues"
+  },
+  "author": "TINNOVE"
+}

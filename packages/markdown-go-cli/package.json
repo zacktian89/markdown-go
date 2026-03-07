@@ -1,0 +1,58 @@
+{
+  "name": "markdown-go",
+  "version": "1.0.0",
+  "description": "Open source Markdown preview and WeChat paste workflow CLI",
+  "type": "module",
+  "bin": {
+    "markdown-go": "dist/cli.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "node ./scripts/clean.mjs",
+    "build": "npm run clean && npm run build:server && npm run build:web",
+    "build:server": "tsc -p tsconfig.build.json",
+    "build:web": "vite build --config vite.config.ts",
+    "typecheck": "tsc -p tsconfig.build.json --noEmit && tsc -p tsconfig.web.json --noEmit",
+    "prepack": "npm run build"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/your-github-name/markdown-go.git"
+  },
+  "homepage": "https://github.com/your-github-name/markdown-go#readme",
+  "bugs": {
+    "url": "https://github.com/your-github-name/markdown-go/issues"
+  },
+  "keywords": [
+    "markdown",
+    "wechat",
+    "preview",
+    "cli",
+    "publisher"
+  ],
+  "author": "TINNOVE",
+  "devDependencies": {
+    "@types/dompurify": "^3.0.5",
+    "@types/markdown-it": "^14.1.2",
+    "@types/node": "^24.3.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.21",
+    "dompurify": "^3.2.6",
+    "highlight.js": "^11.11.1",
+    "lucide-react": "^0.525.0",
+    "markdown-it": "^14.1.0",
+    "markdown-it-task-lists": "^2.1.1",
+    "mermaid": "^11.4.1",
+    "postcss": "^8.5.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3",
+    "vite": "^6.1.0"
+  }
+}

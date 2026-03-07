@@ -1,0 +1,14 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "noEmit": false
+  },
+  "include": [
+    "src/cli.ts",
+    "src/lib/**/*.ts",
+    "src/theme/**/*.ts",
+    "src/types/**/*.d.ts"
+  ]
+}

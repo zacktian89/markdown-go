@@ -1,0 +1,465 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 248 249 250;
+  --fg: 55 65 81;
+  /* 从 33 37 41 改为更柔和的灰黑色，缓解视觉疲劳 */
+  --muted: 108 117 125;
+  --card: 255 255 255;
+  --border: 229 231 235;
+  /* 稍微调浅边框 */
+  --accent: 31 41 55;
+  /* 强调色也稍微调浅，不再是纯黑 */
+  --sidebar: 255 255 255;
+  --sat: env(safe-area-inset-top);
+  --sab: env(safe-area-inset-bottom);
+  --sal: env(safe-area-inset-left);
+  --sar: env(safe-area-inset-right);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: 18 18 18;
+  --fg: 209 213 219;
+  /* 从 248 249 250 改为更柔和的浅灰色 */
+  --muted: 156 163 175;
+  /* 从 173 181 189 改为更柔和的灰色 */
+  --card: 28 28 28;
+  --border: 44 44 44;
+  --accent: 209 213 219;
+  /* 强调色也同步调低对比度 */
+  --sidebar: 24 24 24;
+  --sat: env(safe-area-inset-top);
+  --sab: env(safe-area-inset-bottom);
+  --sal: env(safe-area-inset-left);
+  --sar: env(safe-area-inset-right);
+  color-scheme: dark;
+}
+
+.pt-safe {
+  padding-top: var(--sat);
+}
+
+.pb-safe {
+  padding-bottom: var(--sab);
+}
+
+.pl-safe {
+  padding-left: var(--sal);
+}
+
+.pr-safe {
+  padding-right: var(--sar);
+}
+
+html,
+body,
+#root {
+  /* 使用 fixed 定位覆盖整个视口，包括 iOS 安全区域 */
+  position: fixed;
+  inset: 0;
+  /* 等同于 top: 0; right: 0; bottom: 0; left: 0; */
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  /* 设置与应用一致的背景色，防止安全区域露出不同颜色 */
+  background-color: rgb(var(--bg));
+}
+
+body {
+  @apply bg-bg text-fg antialiased selection:bg-accent/10 selection:text-accent;
+  /* 确保 body 也有正确的背景色，防止 iOS 安全区域露出不同颜色 */
+  background-color: rgb(var(--bg));
+  /* Apple SF Pro 字体系统 - 优先使用系统字体获得最佳渲染 */
+  font-family:
+    "SF Pro Display",
+    "SF Pro Text",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Helvetica Neue",
+    "PingFang SC",
+    "Hiragino Sans GB",
+    "Microsoft YaHei",
+    sans-serif;
+  /* macOS/iOS 字体平滑 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Apple Typography 负字间距 */
+  letter-spacing: -0.01em;
+  /* 文本渲染优化 */
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg border border-border bg-card px-4 py-2 text-sm font-medium text-fg transition-all hover:border-fg/20 hover:bg-fg/5 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-50;
+}
+
+.btn-primary {
+  @apply border-transparent bg-accent text-bg hover:bg-accent/90 active:bg-accent/80;
+}
+
+.icon-btn {
+  @apply inline-flex h-9 w-9 items-center justify-center rounded-lg border border-transparent text-muted transition-all hover:bg-fg/5 hover:text-fg active:scale-95 disabled:opacity-30;
+}
+
+.icon-btn.active {
+  @apply bg-fg/10 text-fg border-border;
+}
+
+.card {
+  @apply rounded-xl border border-border bg-card shadow-soft;
+}
+
+/* =========================================
+   WeChatGo Typography System (CSS Variables)
+   统一的字体字号规范
+   
+   参考：
+   - macOS HIG: 默认 13pt, 最小 10pt
+   - Windows Fluent: 默认 14px, 最小 10px  
+   - iOS HIG: 默认 17pt, 最小 11pt
+   - Android MD: 默认 14sp, 最小 12sp
+   
+   【注意】此处只管理 APP 自身 UI 字体
+   预览/复制样式在 wechatTheme.ts 中独立管理
+   ========================================= */
+
+:root {
+  /* 字号标记 (Font Size Tokens) */
+  --font-size-xs2: 10px;
+  /* 版权信息 */
+  --font-size-xs: 11px;
+  /* 最小可读字号 */
+  --font-size-sm: 12px;
+  /* 标签、时间戳 */
+  --font-size-base: 13px;
+  /* 辅助正文 */
+  --font-size-md: 14px;
+  /* 标准正文 */
+  --font-size-lg: 15px;
+  /* 菜单、重要正文 */
+  --font-size-xl: 16px;
+  /* 小标题 */
+  --font-size-xl2: 18px;
+  /* 中标题 */
+  --font-size-xl3: 20px;
+  /* 大标题 */
+  --font-size-xl4: 22px;
+  /* 页面标题 */
+  --font-size-xl5: 24px;
+  /* 主标题 */
+  --font-size-xl6: 28px;
+  /* 超大标题 */
+
+  /* 行高标记 (Line Height Tokens) */
+  --line-height-tight: 1.2;
+  /* 单行/按钮 */
+  --line-height-snug: 1.3;
+  /* 标题 */
+  --line-height-normal: 1.5;
+  /* 短段落 */
+  --line-height-relaxed: 1.625;
+  /* 长文本 */
+  --line-height-loose: 1.75;
+  /* 超长文本 */
+
+  /* 字重标记 (Font Weight Tokens) */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+  --font-weight-black: 900;
+
+  /* 字间距标记 (Letter Spacing Tokens) */
+  --letter-spacing-tighter: -0.02em;
+  --letter-spacing-tight: -0.01em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.02em;
+  --letter-spacing-wider: 0.05em;
+}
+
+/* =========================================
+   语义化文本样式类 (Semantic Text Styles)
+   ========================================= */
+
+/* 菜单项文字 */
+.text-menu-item {
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-snug);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* 标签文字 - 用于表单标签等 */
+.text-label {
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-snug);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* 设置项标签 - 全大写辅助标签 */
+.text-settings-label {
+  font-size: var(--font-size-xs2);
+  line-height: var(--line-height-snug);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
+}
+
+/* 区块标题 */
+.text-section-title {
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-snug);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* 对话框标题 */
+.text-dialog-title {
+  font-size: var(--font-size-xl3);
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-tighter);
+}
+
+/* 正文 */
+.text-body {
+  font-size: var(--font-size-md);
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* 小字正文 */
+.text-body-sm {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: var(--letter-spacing-normal);
+}
+
+/* =========================================
+   菜单和下拉框组件
+   ========================================= */
+
+/* 下拉菜单容器 */
+.dropdown-menu {
+  @apply origin-top-right rounded-xl border border-border bg-card p-1.5 shadow-xl;
+  min-width: 160px;
+}
+
+/* 菜单项 - 使用语义化字号 */
+.menu-item {
+  @apply flex w-full items-center gap-3 rounded-lg px-3 py-2.5 transition-all;
+  @apply hover:bg-fg/5 active:bg-fg/10 press-scale;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-snug);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-normal);
+  min-height: 44px;
+  /* iOS 最小触控区域 */
+}
+
+.menu-item-icon {
+  @apply text-muted flex-shrink-0;
+  width: 18px;
+  height: 18px;
+}
+
+.menu-item-danger {
+  @apply text-red-500 hover:bg-red-500/5 active:bg-red-500/10;
+}
+
+.menu-item-accent {
+  @apply text-accent;
+}
+
+/* 菜单分割线 */
+.menu-divider {
+  @apply my-1.5 h-px bg-border/50;
+}
+
+/* 统一标签文字 */
+.label-text {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-snug);
+  letter-spacing: var(--letter-spacing-normal);
+  @apply text-muted font-medium uppercase tracking-wider;
+}
+
+@media (max-width: 768px) {
+  .modal-mobile-full {
+    @apply max-h-[calc(100dvh-2rem)] rounded-2xl w-[calc(100%-1rem)] mx-auto;
+  }
+
+  .safe-p-top {
+    padding-top: max(0.5rem, var(--sat));
+  }
+
+  .safe-p-bottom {
+    padding-bottom: max(0.5rem, var(--sab));
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-border rounded-full hover:bg-muted/30;
+}
+
+/* Hide scrollbar but keep scroll functionality */
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* 预览区：所见即所得（与公众号粘贴一致），避免 prose 干扰 */
+.md-preview {
+  @apply max-w-none break-words;
+  word-break: break-all;
+}
+
+/* =========================================
+   iOS Native Experience Enhancements
+   ========================================= */
+
+/* iOS 原生滚动行为 */
+.ios-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+}
+
+/* iOS 触摸反馈基础 */
+.ios-touch-feedback {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* 按钮最小触控区域 44px (iOS HIG 标准) */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* 按压缩放效果 */
+.press-scale {
+  transition: transform 0.1s ease-out;
+}
+
+.press-scale:active {
+  transform: scale(0.97);
+}
+
+/* 禁用文本选择 (工具栏等区域) */
+.no-select {
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* iOS 弹性入场动画 */
+@keyframes ios-spring-in {
+  0% {
+    transform: scale(0.92);
+    opacity: 0;
+  }
+
+  50% {
+    transform: scale(1.02);
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.animate-ios-spring {
+  animation: ios-spring-in 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* iOS 弹性下滑动画 */
+@keyframes ios-slide-up {
+  0% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-ios-slide-up {
+  animation: ios-slide-up 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* iOS 风格按钮高亮 */
+@media (max-width: 768px) {
+
+  .btn,
+  .icon-btn {
+    @apply ios-touch-feedback;
+  }
+
+  .btn:active,
+  .icon-btn:active {
+    transform: scale(0.97);
+    opacity: 0.85;
+  }
+
+  /* 移动端扩大工具栏按钮触控区域 - iOS HIG 标准 44px */
+  .icon-btn {
+    min-width: 44px;
+    min-height: 44px;
+    border-radius: 10px;
+  }
+
+  /* 底部工具栏内的按钮稍作调整 */
+  .icon-btn:focus-visible {
+    outline: 2px solid rgba(var(--accent), 0.4);
+    outline-offset: 2px;
+  }
+
+  /* 列表项按压反馈 */
+  .list-item-press:active {
+    background-color: rgba(var(--fg), 0.08);
+    transform: scale(0.99);
+  }
+}
+
+/* 移动端滚动容器优化 */
+.mobile-scroll {
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  scroll-behavior: smooth;
+}
+
+/* iOS 模态框底部动作面板样式 */
+@media (max-width: 768px) {
+  .modal-action-sheet {
+    @apply fixed bottom-0 left-0 right-0 rounded-t-3xl rounded-b-none;
+    max-height: 85vh;
+    animation: ios-slide-up 0.4s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+}
