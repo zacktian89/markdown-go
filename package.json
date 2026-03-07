@@ -5,18 +5,21 @@
     "packages/*"
   ],
   "scripts": {
+    "postinstall": "npm run build --workspace markdown-go",
     "build": "npm run build --workspace markdown-go",
     "typecheck": "npm run typecheck --workspace markdown-go",
-    "pack:cli": "npm pack --workspace markdown-go"
+    "pack:cli": "npm pack --workspace markdown-go",
+    "verify:install": "node ./packages/markdown-go-cli/dist/cli.js README.md",
+    "release:check": "npm run typecheck && npm run pack:cli"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-github-name/markdown-go.git"
+    "url": "git+https://github.com/zacktian89/markdown-go.git"
   },
-  "homepage": "https://github.com/your-github-name/markdown-go#readme",
+  "homepage": "https://github.com/zacktian89/markdown-go#readme",
   "bugs": {
-    "url": "https://github.com/your-github-name/markdown-go/issues"
+    "url": "https://github.com/zacktian89/markdown-go/issues"
   },
   "author": "TINNOVE"
 }

@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "Open source Markdown preview and WeChat paste workflow CLI",
   "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=18"
+  },
   "bin": {
     "markdown-go": "dist/cli.js"
   },
@@ -20,11 +26,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/your-github-name/markdown-go.git"
+    "url": "git+https://github.com/zacktian89/markdown-go.git"
   },
-  "homepage": "https://github.com/your-github-name/markdown-go#readme",
+  "homepage": "https://github.com/zacktian89/markdown-go#readme",
   "bugs": {
-    "url": "https://github.com/your-github-name/markdown-go/issues"
+    "url": "https://github.com/zacktian89/markdown-go/issues"
   },
   "keywords": [
     "markdown",

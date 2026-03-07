@@ -11,8 +11,9 @@
 ```bash
 npm install
 npm run typecheck
-npm run build
 ```
+
+`npm install` includes the initial workspace build, so a separate first-run `npm run build` is no longer required.
 
 ## Validation Before Opening a PR
 
@@ -22,6 +23,12 @@ Run these commands before submitting changes:
 npm run typecheck
 npm run build
 npm run pack:cli
+```
+
+For release validation, use:
+
+```bash
+npm run release:check
 ```
 
 Check that:

@@ -17,15 +17,44 @@ It has a dual positioning:
 
 ## Install
 
+Install globally from npm:
+
+```bash
+npm install -g markdown-go
+```
+
+Then run:
+
+```bash
+markdown-go ./example.md
+```
+
+For local workspace development:
+
 ```bash
 npm install
-npm run build
 ```
+
+`npm install` now performs the local workspace build automatically, so the CLI is ready right after dependencies finish installing.
+
+Quick verification:
+
+```bash
+npm run verify:install
+```
+
+That command starts the built local CLI directly from the workspace and opens the preview for `README.md`.
 
 To validate the package tarball locally:
 
 ```bash
 npm run pack:cli
+```
+
+To validate the npm release flow before publishing:
+
+```bash
+npm run release:check
 ```
 
 ## Usage
@@ -49,8 +78,7 @@ The CLI starts a local preview server and opens a browser window. From the previ
 ```bash
 npm install
 npm run typecheck
-npm run build
-npx --no-install markdown-go README.md
+npm run verify:install
 ```
 
 ## Current Boundaries
@@ -69,6 +97,20 @@ npx --no-install markdown-go README.md
 ## Release Status
 
 This repository is being prepared as the initial open source release stream for `markdown-go` and is currently aligned with version `1.0.0`.
+
+## Publish To npm
+
+`markdown-go` is currently available to publish on npm because the package name is not present in the npm registry as of March 7, 2026.
+
+Before the first publish:
+
+```bash
+npm login
+npm run release:check
+npm publish --workspace markdown-go --access public
+```
+
+After publishing, users can install it with `npm install -g markdown-go`.
 
 ## License
 
