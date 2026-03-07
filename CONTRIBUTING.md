@@ -15,6 +15,8 @@ npm run typecheck
 
 `npm install` includes the initial workspace build, so a separate first-run `npm run build` is no longer required.
 
+Workspace commands in the repository root target `./packages/markdown-go-cli`.
+
 ## Validation Before Opening a PR
 
 Run these commands before submitting changes:

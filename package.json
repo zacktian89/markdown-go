@@ -5,10 +5,10 @@
     "packages/*"
   ],
   "scripts": {
-    "postinstall": "npm run build --workspace markdown-go",
-    "build": "npm run build --workspace markdown-go",
-    "typecheck": "npm run typecheck --workspace markdown-go",
-    "pack:cli": "npm pack --workspace markdown-go",
+    "postinstall": "npm run build --workspace ./packages/markdown-go-cli",
+    "build": "npm run build --workspace ./packages/markdown-go-cli",
+    "typecheck": "npm run typecheck --workspace ./packages/markdown-go-cli",
+    "pack:cli": "npm pack --workspace ./packages/markdown-go-cli",
     "verify:install": "node ./packages/markdown-go-cli/dist/cli.js README.md",
     "release:check": "npm run typecheck && npm run pack:cli"
   },

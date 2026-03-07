@@ -20,7 +20,7 @@ It has a dual positioning:
 Install globally from npm:
 
 ```bash
-npm install -g markdown-go
+npm install -g @zacktian/markdown-go
 ```
 
 Then run:
@@ -100,17 +100,17 @@ This repository is being prepared as the initial open source release stream for 
 
 ## Publish To npm
 
-`markdown-go` is currently available to publish on npm because the package name is not present in the npm registry as of March 7, 2026.
+This package is published as `@zacktian/markdown-go` to avoid npm package-name similarity restrictions on the unscoped `markdown-go` name.
 
 Before the first publish:
 
 ```bash
 npm login
 npm run release:check
-npm publish --workspace markdown-go --access public
+npm publish --workspace ./packages/markdown-go-cli --access public --registry=https://registry.npmjs.org/
 ```
 
-After publishing, users can install it with `npm install -g markdown-go`.
+After publishing, users can install it with `npm install -g @zacktian/markdown-go`.
 
 ## License
 

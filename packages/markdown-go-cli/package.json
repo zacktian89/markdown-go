@@ -1,5 +1,5 @@
 {
-  "name": "markdown-go",
+  "name": "@zacktian/markdown-go",
   "version": "1.0.0",
   "description": "Open source Markdown preview and WeChat paste workflow CLI",
   "type": "module",

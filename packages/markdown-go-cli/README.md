@@ -5,7 +5,7 @@
 ## Install
 
 ```bash
-npm install -g markdown-go
+npm install -g @zacktian/markdown-go
 ```
 
 ## Usage
