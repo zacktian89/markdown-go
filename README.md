@@ -14,6 +14,7 @@ It has a dual positioning:
 - Support fenced code blocks, Mermaid diagrams, task lists, and inline image conversion.
 - Switch between built-in article themes before copying.
 - Run as a local CLI without depending on a remote service.
+- Install a packaged skill into Codex, Claude Code, Cursor, and Antigravity-compatible skill directories.
 
 ## Install
 
@@ -29,6 +30,40 @@ Then run:
 markdown-go ./example.md
 ```
 
+## One-Click Skill Install
+
+After the CLI is available, install the bundled skill with:
+
+```bash
+markdown-go install-skill
+```
+
+Useful variants:
+
+```bash
+markdown-go install-skill --tool codex
+markdown-go install-skill --tool all
+markdown-go install-skill --tool cursor --force
+markdown-go install-skill --tool codex --dry-run
+```
+
+Repository bootstrap scripts for external users:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\install-skill.ps1
+```
+
+```bash
+bash ./scripts/install-skill.sh
+```
+
+The installer will:
+
+- Detect supported tool environments on Windows and macOS.
+- Ensure Node.js 18+ and npm are available.
+- Ensure the published `@zacktian/markdown-go` CLI is installed globally.
+- Copy a pinned `markdown-go` skill into each selected tool's skill directory.
+
 For local workspace development:
 
 ```bash
@@ -41,9 +76,10 @@ Quick verification:
 
 ```bash
 npm run verify:install
+npm run verify:skill-install
 ```
 
-That command starts the built local CLI directly from the workspace and opens the preview for `README.md`.
+That second command runs the packaged installer in `--dry-run` mode against a Codex target, which is useful for release checks.
 
 To validate the package tarball locally:
 
@@ -79,6 +115,7 @@ The CLI starts a local preview server and opens a browser window. From the previ
 npm install
 npm run typecheck
 npm run verify:install
+npm run verify:skill-install
 ```
 
 ## Current Boundaries
@@ -96,7 +133,7 @@ npm run verify:install
 
 ## Release Status
 
-This repository is being prepared as the initial open source release stream for `markdown-go` and is currently aligned with version `1.0.0`.
+This repository is being prepared as the initial open source release stream for `markdown-go` and is currently aligned with version `1.1.1`.
 
 ## Publish To npm
 

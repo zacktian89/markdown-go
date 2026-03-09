@@ -8,6 +8,23 @@
 npm install -g @zacktian/markdown-go
 ```
 
+## Install Skill
+
+Install the packaged `markdown-go` skill into supported AI coding tools:
+
+```bash
+markdown-go install-skill
+```
+
+You can target a specific tool or preview the result without writing files:
+
+```bash
+markdown-go install-skill --tool codex
+markdown-go install-skill --tool all --dry-run
+```
+
+The installer currently supports Codex, Claude Code, Cursor, and Antigravity-compatible skill directories.
+
 ## Usage
 
 Preview a Markdown file:

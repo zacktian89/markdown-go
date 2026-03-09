@@ -1,10 +1,11 @@
 {
   "name": "@zacktian/markdown-go",
-  "version": "1.0.0",
+  "version": "1.1.1",
   "description": "Open source Markdown preview and WeChat paste workflow CLI",
   "type": "module",
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "engines": {
     "node": ">=18"
@@ -13,7 +14,8 @@
     "markdown-go": "dist/cli.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "assets"
   ],
   "scripts": {
     "clean": "node ./scripts/clean.mjs",
@@ -37,9 +39,10 @@
     "wechat",
     "preview",
     "cli",
-    "publisher"
+    "publisher",
+    "skill"
   ],
-  "author": "TINNOVE",
+  "author": "Zack",
   "devDependencies": {
     "@types/dompurify": "^3.0.5",
     "@types/markdown-it": "^14.1.2",
@@ -62,3 +65,4 @@
     "vite": "^6.1.0"
   }
 }
+

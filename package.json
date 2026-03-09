@@ -10,6 +10,7 @@
     "typecheck": "npm run typecheck --workspace ./packages/markdown-go-cli",
     "pack:cli": "npm pack --workspace ./packages/markdown-go-cli",
     "verify:install": "node ./packages/markdown-go-cli/dist/cli.js README.md",
+    "verify:skill-install": "node ./packages/markdown-go-cli/dist/cli.js install-skill --tool codex --dry-run",
     "release:check": "npm run typecheck && npm run pack:cli"
   },
   "license": "MIT",
@@ -21,5 +22,7 @@
   "bugs": {
     "url": "https://github.com/zacktian89/markdown-go/issues"
   },
-  "author": "TINNOVE"
+  "author": "Zack",
+  "version": "1.1.1"
 }
+
