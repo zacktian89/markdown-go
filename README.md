@@ -87,6 +87,11 @@ markdown-go ./your-article.md
 
 你会看到本地预览页，并且文件保存后会自动刷新。
 
+如果你已经安装了 Skill，也可以直接让 AI 帮你启动预览，例如：
+
+- 在支持 Skill 的 AI 编码工具里说“帮我预览 `./your-article.md`”或“帮我把这篇 Markdown 按公众号样式预览一下”
+- AI 会根据已安装的 Skill，自动调用 `markdown-go` 来启动本地预览工作流
+
 ### 3. 切换主题并复制
 
 在浏览器里：

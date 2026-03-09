@@ -87,6 +87,11 @@ markdown-go ./your-article.md
 
 You will get a local preview page, and saving the file will refresh it automatically.
 
+If you have installed the skill, you can also ask AI to start the preview for you, for example:
+
+- In a skill-enabled AI coding tool, say `Preview ./your-article.md` or `Preview this Markdown with a WeChat-friendly layout`
+- The AI can use the installed skill to invoke `markdown-go` automatically and start the local preview workflow
+
 ### 3. Switch Theme and Copy
 
 In the browser:
