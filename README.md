@@ -1,44 +1,116 @@
 # markdown-go
 
-`markdown-go` is an open source Markdown preview and publishing workflow tool, with first-class support for WeChat article paste and layout.
+[English README](./README.en.md)
 
-It has a dual positioning:
+`markdown-go` 是一个本地运行的 Markdown 预览与发布工作流 CLI，重点优化了微信公众号排版粘贴场景。
 
-- A practical Markdown to WeChat preview/paste tool for public account workflows.
-- A broader Markdown publishing workspace that can grow to support more output targets over time.
+## 30 秒快速开始
 
-## Features
+前置要求：
 
-- Preview local Markdown files in a browser with live reload.
-- Render content into HTML optimized for WeChat article editor paste.
-- Support fenced code blocks, Mermaid diagrams, task lists, and inline image conversion.
-- Switch between built-in article themes before copying.
-- Run as a local CLI without depending on a remote service.
-- Install a packaged skill into Codex, Claude Code, Cursor, and Antigravity-compatible skill directories.
+- Node.js 18+
+- npm 9+
 
-## Install
-
-Install globally from npm:
+安装：
 
 ```bash
 npm install -g @zacktian/markdown-go
 ```
 
-Then run:
+运行：
+
+```bash
+markdown-go README.md
+```
+
+如果你只是想马上试一下，也可以直接预览字符串：
+
+```bash
+markdown-go "# Hello markdown-go\n\n你好，世界。" --is-string
+```
+
+启动后会发生这些事：
+
+1. 在本地启动一个预览服务。
+2. 自动打开浏览器预览页面。
+3. 你可以切换排版主题，并将结果一键复制到微信公众号编辑器。
+
+## 它适合做什么
+
+- 预览本地 Markdown 文件，并在保存后自动刷新
+- 将 Markdown 渲染成适合微信公众号编辑器粘贴的 HTML
+- 支持代码块、Mermaid、任务列表和图片转 Base64
+- 内置多套主题，可在预览页切换
+- 全程本地运行，不依赖远程服务
+
+## 界面截图
+
+| 桌面端预览 | 窄屏预览 |
+| --- | --- |
+| ![Desktop preview](./docs/images/preview-home.png) | ![Compact preview](./docs/images/preview-mobile.png) |
+
+上面的截图使用仓库中的中英混排示例文档生成，真实反映当前 CLI 启动后的预览界面。
+
+## 三步上手
+
+### 1. 准备一个 Markdown 文件
+
+任意 `.md` 文件都可以，例如：
+
+```md
+# 你好 / Hello
+
+这是中文段落。
+
+This is an English paragraph.
+
+- 支持中文
+- Supports English
+```
+
+### 2. 启动预览
+
+```bash
+markdown-go ./your-article.md
+```
+
+你会看到本地预览页，并且文件保存后会自动刷新。
+
+### 3. 切换主题并复制
+
+在浏览器里：
+
+- 点击右上角主题按钮切换样式
+- 点击“复制”按钮
+- 直接粘贴到微信公众号编辑器
+
+## 中文 / English 支持
+
+- 支持中文、英文以及中英混排 Markdown 内容
+- 中文标题、英文段落、代码块、Mermaid 图表都可以正常渲染
+- 当前预览界面文案以中文为主，但内容渲染本身对中英文都友好
+
+## 常用命令
+
+预览本地文件：
 
 ```bash
 markdown-go ./example.md
 ```
 
-## One-Click Skill Install
+直接预览 Markdown 字符串：
 
-After the CLI is available, install the bundled skill with:
+```bash
+markdown-go "# Hello\n\nThis is a preview." --is-string
+```
+
+安装打包好的技能到 AI 编码工具：
 
 ```bash
 markdown-go install-skill
 ```
 
-Useful variants:
+常见变体：
 
 ```bash
 markdown-go install-skill --tool codex
@@ -47,109 +119,33 @@ markdown-go install-skill --tool cursor --force
 markdown-go install-skill --tool codex --dry-run
 ```
 
-Repository bootstrap scripts for external users:
+## 本地开发
 
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\install-skill.ps1
-```
-
-```bash
-bash ./scripts/install-skill.sh
-```
-
-The installer will:
-
-- Detect supported tool environments on Windows and macOS.
-- Ensure Node.js 18+ and npm are available.
-- Ensure the published `@zacktian/markdown-go` CLI is installed globally.
-- Copy a pinned `markdown-go` skill into each selected tool's skill directory.
-
-For local workspace development:
+安装依赖并构建：
 
 ```bash
 npm install
 ```
 
-`npm install` now performs the local workspace build automatically, so the CLI is ready right after dependencies finish installing.
-
-Quick verification:
+常用检查命令：
 
 ```bash
-npm run verify:install
-npm run verify:skill-install
-```
-
-That second command runs the packaged installer in `--dry-run` mode against a Codex target, which is useful for release checks.
-
-To validate the package tarball locally:
-
-```bash
-npm run pack:cli
-```
-
-To validate the npm release flow before publishing:
-
-```bash
-npm run release:check
-```
-
-## Usage
-
-Preview a Markdown file:
-
-```bash
-markdown-go ./example.md
-```
-
-Preview a Markdown string directly:
-
-```bash
-markdown-go "# Hello\n\nThis is a preview." --is-string
-```
-
-The CLI starts a local preview server and opens a browser window. From the preview UI, you can switch themes and copy rendered HTML for WeChat paste.
-
-## Local Development
-
-```bash
-npm install
 npm run typecheck
 npm run verify:install
 npm run verify:skill-install
 ```
 
-## Current Boundaries
-
-- The current public CLI is centered on local preview and WeChat paste workflow.
-- Internal rendering APIs are not treated as stable public interfaces yet.
-- The web preview is bundled as part of the CLI package and is not documented as a standalone browser API.
-
-## Roadmap
-
-- Improve documentation and first-run onboarding.
-- Add CI-backed release hygiene and package validation.
-- Expand beyond WeChat-first workflows to additional Markdown publishing targets.
-- Introduce issue templates, PR templates, and more contributor automation.
-
-## Release Status
-
-This repository is being prepared as the initial open source release stream for `markdown-go` and is currently aligned with version `1.1.1`.
-
-## Publish To npm
-
-This package is published as `@zacktian/markdown-go` to avoid npm package-name similarity restrictions on the unscoped `markdown-go` name.
-
-Before the first publish:
+打包 CLI：
 
 ```bash
-npm login
-npm run release:check
-npm publish --workspace ./packages/markdown-go-cli --access public --registry=https://registry.npmjs.org/
+npm run pack:cli
 ```
 
-After publishing, users can install it with `npm install -g @zacktian/markdown-go`.
+## 仓库说明
+
+- 这是一个 workspace 仓库，核心 CLI 位于 `packages/markdown-go-cli`
+- `npm install` 会自动执行本地构建，安装完成后即可直接验证 CLI
 
 ## License
 
 [MIT](./LICENSE)
-
