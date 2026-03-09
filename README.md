@@ -17,6 +17,17 @@
 npm install -g @zacktian/markdown-go
 ```
 
+推荐同时安装 Skill，让支持的 AI 编码工具可以自动发现并调用 `markdown-go`：
+
+```bash
+markdown-go install-skill
+```
+
+适用场景：
+
+- 在 Codex、Claude Code、Cursor 等支持 Skill 的工具里复用同一套 Markdown 预览与微信公众号排版能力
+- 让 AI 在处理 Markdown 预览、排版、发布类任务时自动调用 `markdown-go`
+
 运行：
 
 ```bash

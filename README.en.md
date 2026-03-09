@@ -17,6 +17,17 @@ Install:
 npm install -g @zacktian/markdown-go
 ```
 
+Recommended: install the bundled skill so supported AI coding tools can discover and invoke `markdown-go` automatically:
+
+```bash
+markdown-go install-skill
+```
+
+Useful for:
+
+- Reusing the same Markdown preview and WeChat formatting workflow inside tools like Codex, Claude Code, and Cursor
+- Letting AI automatically call `markdown-go` for Markdown preview, formatting, and publishing-related tasks
+
 Run:
 
 ```bash
