@@ -2,7 +2,7 @@
 
 [English README](./README.en.md)
 
-`markdown-go` 是一个本地运行的 Markdown 预览与发布工作流 CLI，重点优化了微信公众号排版粘贴场景。
+`markdown-go` 是一个本地运行的 Markdown 预览与发布工作流 CLI，重点优化了微信公众号排版粘贴场景，内置 10 余种精美的人工设计主题模板。
 
 ## 30 秒快速开始
 
@@ -11,7 +11,33 @@
 - Node.js 18+
 - npm 9+
 
-安装：
+如果你还没有安装 npm：
+
+- Windows：安装 Node.js LTS 即可一并获得 npm，推荐运行 `winget install OpenJS.NodeJS.LTS`
+- macOS：推荐运行 `brew install node`
+- 安装完成后可用 `node -v` 和 `npm -v` 确认环境
+
+一键安装：
+
+Windows 用户不需要先拉代码，直接在 PowerShell 里运行：
+
+```powershell
+$installer = Join-Path $env:TEMP "markdown-go-install.ps1"
+Invoke-WebRequest "https://raw.githubusercontent.com/zacktian89/markdown-go/main/install.ps1" -OutFile $installer
+& powershell -NoProfile -ExecutionPolicy Bypass -File $installer
+```
+
+macOS 用户不需要先拉代码，直接在终端运行：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/zacktian89/markdown-go/main/install.sh | bash
+```
+
+上面的脚本会在缺少 Node.js / npm 时先安装 Node.js LTS，然后全局安装 `markdown-go`，并默认执行 `markdown-go install-skill`。
+
+如果你已经拉了仓库，也可以直接运行仓库根目录的 `install.cmd`、`install.ps1` 或 `install.command`。
+
+手动安装：
 
 ```bash
 npm install -g @zacktian/markdown-go
@@ -51,7 +77,7 @@ markdown-go "# Hello markdown-go\n\n你好，世界。" --is-string
 - 预览本地 Markdown 文件，并在保存后自动刷新
 - 将 Markdown 渲染成适合微信公众号编辑器粘贴的 HTML
 - 支持代码块、Mermaid、任务列表和图片转 Base64
-- 内置多套主题，可在预览页切换
+- 内置 10 余种精美的人工设计主题模板，可在预览页自由切换
 - 全程本地运行，不依赖远程服务
 
 ## 界面截图
@@ -161,6 +187,8 @@ npm run pack:cli
 
 - 这是一个 workspace 仓库，核心 CLI 位于 `packages/markdown-go-cli`
 - `npm install` 会自动执行本地构建，安装完成后即可直接验证 CLI
+- 仓库根目录提供了 `install.ps1`、`install.cmd`、`install.sh` 和 `install.command`
+- 不拉代码时，也可以直接通过 GitHub Raw 下载并执行安装脚本
 
 ## License
 

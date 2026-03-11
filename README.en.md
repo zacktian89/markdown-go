@@ -2,7 +2,7 @@
 
 [中文说明](./README.md)
 
-`markdown-go` is a local Markdown preview and publishing workflow CLI, designed for fast WeChat article formatting and paste-ready HTML output.
+`markdown-go` is a local Markdown preview and publishing workflow CLI, designed for fast WeChat article formatting and paste-ready HTML output, with 10+ polished handcrafted themes built in.
 
 ## 30-Second Quick Start
 
@@ -11,7 +11,33 @@ Requirements:
 - Node.js 18+
 - npm 9+
 
-Install:
+If you do not have npm yet:
+
+- Windows: install Node.js LTS, which includes npm. Recommended command: `winget install OpenJS.NodeJS.LTS`
+- macOS: the simplest option is `brew install node`
+- Verify the setup with `node -v` and `npm -v`
+
+One-click install:
+
+Windows users do not need to clone the repo first. Run this in PowerShell:
+
+```powershell
+$installer = Join-Path $env:TEMP "markdown-go-install.ps1"
+Invoke-WebRequest "https://raw.githubusercontent.com/zacktian89/markdown-go/main/install.ps1" -OutFile $installer
+& powershell -NoProfile -ExecutionPolicy Bypass -File $installer
+```
+
+macOS users can also install directly without cloning:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/zacktian89/markdown-go/main/install.sh | bash
+```
+
+These scripts install Node.js LTS first when Node.js / npm are missing, then install `markdown-go` globally and run `markdown-go install-skill` by default.
+
+If you already cloned the repository, you can still use the local helper files in the repo root: `install.cmd`, `install.ps1`, `install.sh`, or `install.command`.
+
+Manual install:
 
 ```bash
 npm install -g @zacktian/markdown-go
@@ -51,7 +77,7 @@ After startup, `markdown-go` will:
 - Preview local Markdown files with live reload
 - Render Markdown into WeChat-friendly HTML
 - Support code blocks, Mermaid, task lists, and Base64 image conversion
-- Switch between built-in article themes in the preview UI
+- Switch between 10+ polished handcrafted article themes in the preview UI
 - Run locally without relying on a remote service
 
 ## Screenshots
@@ -161,6 +187,8 @@ npm run pack:cli
 
 - This is a workspace repository, and the main CLI lives in `packages/markdown-go-cli`
 - `npm install` runs the local build automatically, so the CLI is ready right after dependencies finish installing
+- The repository root now includes `install.ps1`, `install.cmd`, `install.sh`, and `install.command`
+- Users can also install without cloning by downloading the scripts directly from GitHub Raw
 
 ## License
 

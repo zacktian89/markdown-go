@@ -1,6 +1,8 @@
 ---
 name: markdown-go
 description: Use this skill when the user asks to preview, publish, format, or typeset Markdown for WeChat Official Accounts or other rich-text platforms. Invoke the installed markdown-go CLI command pinned by the installer, instead of repo-local source files.
+homepage: https://github.com/zacktian89/markdown-go
+metadata: {"openclaw":{"requires":{"bins":["node"]}}}
 ---
 
 # markdown-go
